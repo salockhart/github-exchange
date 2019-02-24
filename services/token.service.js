@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 
-const secret = process.env['JWT_SECRET'];
+const secret = process.env.JWT_SECRET;
 
 module.exports = {
     sign: (payload) => new Promise((resolve, reject) => {

@@ -12,13 +12,13 @@ app.use(function(req, res, next) {
   next();
 });
 
-if (process.env['NODE_ENV'] !== 'production') {
+if (process.env.NODE_ENV !== 'production') {
   app.use(logger('dev'));
 }
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use(fathom({ server: process.env['FATHOM_SERVER'], siteID: process.env['FATHOM_SITE'] }))
+app.use(fathom({ server: process.env.FATHOM_SERVER, siteID: process.env.FATHOM_SITE }))
 
 app.use('/api/apps', appsRouter);
 
