@@ -4,6 +4,8 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
+const fathom = require('express-fathom');
+
 const indexRouter = require('./routes/index');
 const appsRouter = require('./routes/apps');
 
@@ -18,6 +20,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(fathom({ server: process.env['FATHOM_SERVER'], siteID: process.env['FATHOM_SITE'] }))
 
 app.use('/', indexRouter);
 app.use('/api/apps', appsRouter);
